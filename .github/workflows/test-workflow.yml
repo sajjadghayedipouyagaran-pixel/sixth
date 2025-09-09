@@ -21,9 +21,9 @@ jobs:
       - name: Install Newman
         run: npm install -g newman 
 
-      - name: Run Postman Collection
-        run: |
-          newman run test.json -e env.json 
+      - name: Run Postman Collection (Debug Mode with User-Agent)
+        run: newman run test.json -e env.json --user-agent "PostmanRuntime/7.39.1" -r htmlextra --reporter-htmlextra-export report.html
+ 
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
